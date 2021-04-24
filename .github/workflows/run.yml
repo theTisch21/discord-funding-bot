@@ -1,0 +1,24 @@
+name: Run Bot
+on:
+  schedule: '0/5 * * * *'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        name: Cache node_modules
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('./package-lock.json') }}
+
+      - name: install node modules
+        run: npm i
+
+      - name: run bot
+        run: node index.js
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          SG_URL: ${{ secrets.SG_URL }}
