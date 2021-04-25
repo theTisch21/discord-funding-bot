@@ -54,7 +54,7 @@ async function update() {
     //For debugging
     console.log(numbers)
 
-    //Detects and finds the tital
+    //Detects and finds the total
     let total = 0;
     numbers.forEach(item => {
         total += parseInt(item.replace('\$',""))
@@ -106,6 +106,7 @@ async function update() {
 
 
         } catch (e) {
+            //Once in a while, discord.js fails to send the message. This loop and catch block are designed to keep trying until success.
             console.log("Oops lol")
             channel = await client.channels.fetch("826218090018242621")
         }
