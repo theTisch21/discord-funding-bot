@@ -41,15 +41,23 @@ async function update() {
     //Finds the data users inputted, splitting the html into sections by the div tags
     let table = data.split(/(<div class="SUGMemberComment">|<\/div>|\(.*\))/gm)
     let numbers = [];
+    let postcards = false
     table.forEach(item => {
-        if(item.length <= 5) {
-            //Tests if the string is either a number, or a number with a $ in front
-            if(regexIndexOf(item, /(\$[0-9]|[0-9])/, 0) === 0) {
-                //console.log(item)
-                //Adds each number to the list
-                numbers.push(item)
-            }
+        if(regexIndexOf(item, /postcard/i, 0) >= 0) {
+            postcards = true;            
         }
+        if(!postcards) {
+            if(item.length <= 5) {
+                //Tests if the string is either a number, or a number with a $ in front
+                if(regexIndexOf(item, /(\$[0-9]|[0-9])/, 0) === 0) {
+                    //console.log(item)
+                    //Adds each number to the list
+                    numbers.push(item)
+                }
+            }
+            
+        }
+       
     })
     //For debugging
     console.log(numbers)
