@@ -41,6 +41,8 @@ async function update() {
     //Finds the data users inputted, splitting the html into sections by the div tags
     let table = data.split(/(<div class="SUGMemberComment">|<\/div>|\(.*\))/gm)
     let numbers = [];
+    console.log(table)
+    let postcards = false
     table.forEach(item => {
         if(item.length <= 5) {
             //Tests if the string is either a number, or a number with a $ in front
