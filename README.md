@@ -1,6 +1,8 @@
 # discord-funding-bot
 A bot to track progress of a signupgenius and send that to a discord server
 
+The funding project is over, so this repository is archived.
+
 ## DISCLAIMER
 I am not a professional node.js programmer. I didn't follow any best practices for this code (Except I kept my discord API token as a github secret). Use at your own risk
 
